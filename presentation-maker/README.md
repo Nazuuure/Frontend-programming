@@ -1,2 +1,2 @@
 # React + TypeScript + Vite
-presentation-maker
+# presentation-maker project for University, Frontend-programming
