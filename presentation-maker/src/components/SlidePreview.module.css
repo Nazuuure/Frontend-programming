@@ -1,0 +1,16 @@
+.slide {
+    width: 320px;
+    height: 180px;
+    background: var(--slide-bg);
+}
+
+.slideBase {
+    height: 180px;
+    display: flex;
+    align-items: center ;
+}
+
+.slideCount {
+    margin: 0;
+    margin-right: 5px;
+}
