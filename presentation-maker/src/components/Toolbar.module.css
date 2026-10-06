@@ -1,0 +1,37 @@
+.toolbar {
+    background: #3b3b4b;
+    border-radius: 10px;
+    height: 20px;
+    padding: 5px 2.5px;
+    display: flex;
+    align-items: center ;
+}
+
+.presentation_name {
+    color: #c0c0d3;
+    height: 30px;
+    font-weight: bold;
+    margin: 0 0 10px 5px;
+}
+
+.button {
+    width: 90px;
+    height: 25px;
+    padding: 2px;
+    background: #1f1f27;
+    border: 0px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+
+    &:hover {
+        background: #0c0c10;
+        box-shadow: 0 0 2px #0c0c10;
+        cursor: pointer;
+    }
+}
+
+.header {
+    background: #272731;
+    border-radius: 10px;
+    padding: 5px;
+}

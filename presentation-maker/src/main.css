@@ -1,0 +1,14 @@
+:root {
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: #c0c0d3;
+  background: #16171d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 5px;
+}
