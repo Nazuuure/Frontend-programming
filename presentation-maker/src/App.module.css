@@ -1,0 +1,14 @@
+.mainArea {
+    display: flex;
+    background: #e4e4e4;
+    height: 88.5vh;
+}
+
+.appContainer {
+    height: 100vh;
+    color: #090909;
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

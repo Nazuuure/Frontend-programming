@@ -7,15 +7,14 @@ describe('Slide', () => {
         const presentation = createPresentation('My Presentation');
         if (presentation) {
 
-            const presentationCopy = addSlide(presentation, "newTestSlide");
+            const presentationCopy = addSlide(presentation);
             expect(presentationCopy).not.toStrictEqual(presentation);
 
-            const slideIndex = presentationCopy.slides?.findIndex(slide => slide.name === "newTestSlide");
+            const slideIndex = presentationCopy.slides?.length - 1;
             if (presentationCopy.slides && slideIndex != undefined && slideIndex > -1) {
                 const slideId = presentationCopy.slides[slideIndex]?.id;
                 expect(presentationCopy.slides[slideIndex]).toStrictEqual({
                     id: slideId,
-                    name: "newTestSlide",
                     objects: []
                 });
             }
@@ -24,9 +23,9 @@ describe('Slide', () => {
     test('Slide was successfully removed/deleted', () => {
         const presentation = createPresentation('My Presentation');
         if (presentation) {
-            let presentationCopy = addSlide(presentation, "newTestSlide1");
-            presentationCopy = addSlide(presentationCopy, "newTestSlide2");
-            const slideIndex = presentationCopy.slides?.findIndex(slide => slide.name === "newTestSlide2");
+            let presentationCopy = addSlide(presentation);
+            presentationCopy = addSlide(presentationCopy);
+            const slideIndex = presentationCopy.slides?.length - 1;
             if (presentationCopy.slides && slideIndex != undefined && slideIndex > -1) {
                 const slideId = presentationCopy.slides[slideIndex]?.id;
                 if (slideId) {
@@ -43,11 +42,11 @@ describe('Slide', () => {
     test('Slide was successfully moved', () => {
         const presentation = createPresentation('My Presentation');
         if (presentation) {
-            let presentationCopy = addSlide(presentation, "newTestSlide1");
-            presentationCopy = addSlide(presentationCopy, "newTestSlide2");
-            presentationCopy = addSlide(presentationCopy, "newTestSlide3");
-            presentationCopy = addSlide(presentationCopy, "movableSlide");
-            const indexBeforeMove = presentationCopy.slides?.findIndex(slide => slide.name === "movableSlide");
+            let presentationCopy = addSlide(presentation);
+            presentationCopy = addSlide(presentationCopy);
+            presentationCopy = addSlide(presentationCopy);
+            presentationCopy = addSlide(presentationCopy);
+            const indexBeforeMove = presentationCopy.slides?.length - 1;
             if (presentationCopy.slides && indexBeforeMove != undefined && indexBeforeMove > -1) {
                 const slideId = presentationCopy.slides[indexBeforeMove]?.id;
                 if (slideId) {
@@ -56,9 +55,8 @@ describe('Slide', () => {
                     const updatedPresentation = moveSlide(presentationCopy, slideId, newIndex);
                     expect(updatedPresentation).not.toStrictEqual(presentationCopy)
 
-                    const indexAfterMove = updatedPresentation.slides?.findIndex(slide => slide.name === "movableSlide");
-                    if (updatedPresentation.slides && indexAfterMove != undefined && indexAfterMove > -1) {
-                        expect(indexAfterMove).toBe(newIndex);
+                    if (updatedPresentation.slides && newIndex != undefined && newIndex > -1) {
+                        expect(updatedPresentation.slides?.findIndex(slide => slide.id == slideId)).toBe(newIndex);
                     }   
                 }
             }
@@ -67,18 +65,17 @@ describe('Slide', () => {
     test('Slide was successfully duplicated', () => {
         const presentation = createPresentation('My Presentation');
         if (presentation) {
-            const presentationCopy = addSlide(presentation, "newTestSlide");
-            const slideIndex = presentationCopy.slides?.findIndex(slide => slide.name === "newTestSlide");
+            const presentationCopy = addSlide(presentation);
+            const slideIndex = presentationCopy.slides?.length - 1;
             if (presentationCopy.slides && slideIndex != undefined && slideIndex > -1) {
                 const slideId = presentationCopy.slides[slideIndex]?.id;
                 if (slideId) {
 
                     const updatedPresentation = duplicateSlide(presentationCopy, slideId)
-                    expect(updatedPresentation).not.toStrictEqual(presentationCopy) 
+                    expect(updatedPresentation).not.toStrictEqual(presentationCopy)
                     
-                    const dublicateIndex = updatedPresentation.slides?.findIndex(slide => slide.name === "newTestSlide-copy");
+                    const dublicateIndex = updatedPresentation.slides?.length - 1;
                     if (updatedPresentation.slides && dublicateIndex != undefined && dublicateIndex > -1) {
-                        expect(updatedPresentation.slides[dublicateIndex]?.name).toBe("newTestSlide-copy");
                         expect(updatedPresentation.slides[slideIndex]?.id).not.toBe(updatedPresentation.slides[dublicateIndex]?.id);
                     }
                 }
@@ -88,8 +85,8 @@ describe('Slide', () => {
     test('Slide background color was successfully set', () => {
         const presentation = createPresentation('My Presentation');
         if (presentation) {
-            const presentationCopy = addSlide(presentation, "newTestSlide");
-            const slideIndex = presentationCopy.slides?.findIndex(slide => slide.name === "newTestSlide");
+            const presentationCopy = addSlide(presentation);
+            const slideIndex = presentationCopy.slides?.length - 1;
             if (presentationCopy.slides && slideIndex != undefined && slideIndex > -1) {
                 const slideId = presentationCopy.slides[slideIndex]?.id;
                 const slide = presentationCopy.slides[slideIndex];
@@ -106,8 +103,8 @@ describe('Slide', () => {
     test('Slide background image was successfully set', () => {
         const presentation = createPresentation('My Presentation');
         if (presentation) {
-            const presentationCopy = addSlide(presentation, "newTestSlide");
-            const slideIndex = presentationCopy.slides?.findIndex(slide => slide.name === "newTestSlide");
+            const presentationCopy = addSlide(presentation);
+            const slideIndex = presentationCopy.slides?.length - 1;
             if (presentationCopy.slides && slideIndex != undefined && slideIndex > -1) {
                 const slideId = presentationCopy.slides[slideIndex]?.id;
                 const slide = presentationCopy.slides[slideIndex];
@@ -124,8 +121,8 @@ describe('Slide', () => {
     test('Slide background gradient was successfully set', () => {
         const presentation = createPresentation('My Presentation');
         if (presentation) {
-            const presentationCopy = addSlide(presentation, "newTestSlide");
-            const slideIndex = presentationCopy.slides?.findIndex(slide => slide.name === "newTestSlide");
+            const presentationCopy = addSlide(presentation);
+            const slideIndex = presentationCopy.slides?.length - 1;
             if (presentationCopy.slides && slideIndex != undefined && slideIndex > -1) {
                 const slideId = presentationCopy.slides[slideIndex]?.id;
                 const slide = presentationCopy.slides[slideIndex];
@@ -142,8 +139,8 @@ describe('Slide', () => {
     test('Slide background was successfully cleared', () => {
         const presentation = createPresentation('My Presentation')
         if (presentation) {
-            const presentationCopy = addSlide(presentation, "newTestSlide")
-            const slideIndex = presentationCopy.slides?.findIndex(slide => slide.name === "newTestSlide");
+            const presentationCopy = addSlide(presentation);
+            const slideIndex = presentationCopy.slides?.length - 1;
             if (presentationCopy.slides && slideIndex != undefined && slideIndex > -1) {
                 const slideId = presentationCopy.slides[slideIndex]?.id;
                 const slide = presentationCopy.slides[slideIndex]

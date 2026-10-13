@@ -4,25 +4,33 @@ import styles from './SlidePreview.module.css';
 type SlidePreviewProps = {
   slide: Slide;
   slideCount: number;
+  isSelected: boolean;
+  onSelect: () => void;
 };
 
-function SlidePreview({ slide, slideCount }: SlidePreviewProps) {
+function SlidePreview({ slide, slideCount, isSelected, onSelect }: SlidePreviewProps) {
   const background = slide.background;
 
-  const backgroundStyle = {
-    '--slide-bg':
-      background?.type === 'color' ? background.color :
-      background?.type === 'gradient' ? `linear-gradient(${background.angle ?? 0}deg, ${background.colors.join(', ')})` :
-      background?.type === 'image' ? `url(${background.url})` :
-      '#ffffff',
-  } as React.CSSProperties;
+  const getBackgroundStyle = () => {
+    if (background?.type === 'color') {
+      return { backgroundColor: background.color };
+    }
+    if (background?.type === 'gradient') {
+      return { backgroundImage: `linear-gradient(${background.angle ?? 0}deg, ${background.colors.join(', ')})` };
+    }
+    if (background?.type === 'image') {
+      return { backgroundImage: `url(${background.url})`, backgroundSize: 'cover' };
+    }
+    return { backgroundColor: '#ffffff' };
+  };
 
   return (
     <div className={styles.slideBase}>
       <p className={styles.slideCount}>{slideCount}</p>
       <div
-        className={styles.slide}
-        style={backgroundStyle}
+        className={`${styles.slide} ${isSelected ? styles.active : ""}`}
+        style={getBackgroundStyle()}
+        onClick={onSelect}
       >
         {
           slide.objects.map((object, index) => {

@@ -1,5 +1,5 @@
 import type { Slide } from "../types/slide";
-import type { TextObject, SizeObjectOptions, TextObjectOptions, CoordinatesObjectOptions, TextStylesOptions } from "../types/objects";
+import type { SizeObjectOptions, TextObjectOptions, CoordinatesObjectOptions, TextStylesOptions } from "../types/objects";
 
 function generateObjectId(parentId: string): string {
   const randomPart = Math.random().toString(36).substring(0, 4)

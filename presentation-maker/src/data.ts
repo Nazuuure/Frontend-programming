@@ -21,7 +21,7 @@ function createTestPresentation(): Presentation {
   }
 
   // Второй слайд
-  presentation = addSlide(presentation, 'Список');
+  presentation = addSlide(presentation);
   let slide2 = presentation.slides[1];
   if (slide2) {
     slide2 = setSlideBackgroundColor(slide2, '#ffffff');
@@ -32,7 +32,7 @@ function createTestPresentation(): Presentation {
   }
 
   // Третий слайд
-  presentation = addSlide(presentation, 'Итоги');
+  presentation = addSlide(presentation);
   let slide3 = presentation.slides[2];
   if (slide3) {
     slide3 = setSlideBackgroundColor(slide3, '#e8f5e9');
@@ -42,7 +42,6 @@ function createTestPresentation(): Presentation {
 
   return presentation;
 }
-
 
 export {
   createTestPresentation,

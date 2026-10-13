@@ -17,7 +17,6 @@ function createPresentation(name: string): Presentation {
     };
     const defaultPresentationSlide: Slide = {
         id: generateSlideId(presentationId),
-        name: "firstSlide",
         objects: []
     };
 

@@ -2,15 +2,29 @@
     width: 320px;
     height: 180px;
     background: var(--slide-bg);
+    cursor: pointer;
+    border: 2px solid transparent;
+    &:hover {
+        border-color: #b0b0b0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .slideBase {
     height: 180px;
+    width: 330px;
     display: flex;
-    align-items: center ;
+    align-items: center;
 }
 
 .slideCount {
     margin: 0;
     margin-right: 5px;
+}
+
+.active {
+  border-color: #4a90e2;
+  box-shadow:
+    0 0 0 2px rgba(74, 144, 226, 0.25),
+    0 2px 8px rgba(74, 144, 226, 0.2);
 }

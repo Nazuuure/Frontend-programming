@@ -1,0 +1,16 @@
+.button {
+    background: #e7e7e7;
+    color: #090909;
+    width: 90px;
+    height: 25px;
+    padding: 2px;
+    border: 0px;
+    letter-spacing: 1px;
+
+    &:hover {
+        color: #e7e7e7;
+        background: #090909;
+        box-shadow: 0 0 3px #090909;
+        cursor: pointer;
+    }
+}

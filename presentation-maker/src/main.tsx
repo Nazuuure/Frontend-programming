@@ -1,21 +1,35 @@
 import { createRoot } from 'react-dom/client';
-import App from './components/App.js';
-import { addEditorChangeHandler } from './editor.js';
+import App from './App.js';
 import { createTestPresentation } from './data.js';
-import { setInitialState } from './editor.js';
-import './main.css'
-
-const initialData = createTestPresentation();
-setInitialState(initialData);
+import type { Presentation, Slide } from './types.js';
+import { 
+  createPresentation, 
+  updatePresentationName, 
+  savePresentation, 
+  loadPresentation,
+  addTextObject,
+  addImageObject,
+  removeObject,
+  moveObject,
+  resizeObject,
+  updateTextObjectStyle,
+  generateSlideId,
+  addSlide,
+  removeSlides,
+  moveSlide,
+  duplicateSlide,
+  setSlideBackgroundColor,
+  setSlideBackgroundImage,
+  setSlideBackgroundGradient,
+  clearSlideBackground
+} from './types.js';
 
 const root = createRoot(document.getElementById('root')!);
 
 function renderApp(): void {
-  root.render(<App presentation={initialData}/>);
+  root.render(
+    <App />
+  );
 }
 
 renderApp();
-
-addEditorChangeHandler(() => {
-  renderApp();
-});

@@ -6,10 +6,9 @@ function generateSlideId(parentId: string): string {
   return `${parentId}-${randomPart}`
 }
 
-function addSlide(presentation: Presentation, slideName?: string): Presentation {
+function addSlide(presentation: Presentation): Presentation {
     const newSlide: Slide = {
         id: generateSlideId(presentation.id),
-        name: slideName || "UntitledSlide",
         objects: []
     }
     
@@ -19,7 +18,7 @@ function addSlide(presentation: Presentation, slideName?: string): Presentation 
             ...(presentation.slides || []),
             newSlide
         ]
-    };
+    }
 }
 
 function removeSlides(presentation: Presentation, slideIds: string[]): Presentation {
@@ -33,7 +32,7 @@ function removeSlides(presentation: Presentation, slideIds: string[]): Presentat
     return {
         ...presentation,
         slides: filteredSlides.length > 0 ? filteredSlides : []
-    };
+    }
 }
 
 function moveSlide(presentation: Presentation, slideId: string, newIndex: number): Presentation {
@@ -66,7 +65,7 @@ function moveSlide(presentation: Presentation, slideId: string, newIndex: number
     return {
         ...presentation,
         slides: slidesCopy,
-    };
+    }
 }
 
 function duplicateSlide(presentation: Presentation, slideId: string): Presentation {
@@ -80,12 +79,11 @@ function duplicateSlide(presentation: Presentation, slideId: string): Presentati
     if (currentSlideId && slidesCopy[currentSlideIndex]?.objects) {
         const currentSlideCopy = {
             ...slidesCopy[currentSlideIndex],
-            name: `${slidesCopy[currentSlideIndex]?.name}-copy`,
             id: generateSlideId(currentSlideId),
         };
 
         slidesCopy.splice(currentSlideIndex + 1, 0, currentSlideCopy)
-        return { 
+        return {
             ...presentation,
             slides: slidesCopy
         };

@@ -2,7 +2,6 @@ import type { TextObject, ImageObject } from "./objects";
 
 type Slide = {
     id: string
-    name: string
     objects: SlideObject[]
     background?: Background
 }

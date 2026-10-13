@@ -1,15 +1,29 @@
-import type { Presentation } from '../types';
+import type { Slide } from '../types';
+import styles from './Workspace.module.css'
 
 type WorkspaceProps = {
-  presentation: Presentation;
+  slide: Slide;
 };
 
-function Workspace({ presentation }: WorkspaceProps) {
+function Workspace({ slide }: WorkspaceProps) {
+    const background = slide.background
+    const getBackgroundStyle = () => {
+        if (background?.type === 'color') {
+            return { backgroundColor: background.color };
+        }
+        if (background?.type === 'gradient') {
+            return { backgroundImage: `linear-gradient(${background.angle ?? 0}deg, ${background.colors.join(', ')})` };
+        }
+        if (background?.type === 'image') {
+            return { backgroundImage: `url(${background.url})`, backgroundSize: 'cover' };
+        }
+        return { backgroundColor: '#ffffff' };
+    };
+
     return (
-        <div className="workspace">
-            <h2>Workspace</h2>
-            <p>This is the workspace area.</p>
-            <pre>currSlideId: {presentation.slides[0].id}</pre>
+        <div className={styles.workspace}>
+            <div className={styles.current_slide} style={getBackgroundStyle()}>
+            </div>    
         </div>
     );
 }

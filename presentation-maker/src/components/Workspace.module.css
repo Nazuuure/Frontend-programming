@@ -1,0 +1,10 @@
+.workspace {
+    margin: auto;
+    
+}
+
+.current_slide {
+    height: 540px;
+    width: 960px;
+    background: #ffffff;
+}

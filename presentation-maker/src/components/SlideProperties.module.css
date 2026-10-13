@@ -1,0 +1,35 @@
+.properties_container {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.picker_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.picker_label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.color_indicator {
+  width: 20px;
+  height: 25px;
+  display: inline-block;
+}
+
+.hidden_input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

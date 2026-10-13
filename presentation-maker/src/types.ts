@@ -15,7 +15,7 @@ import {
     savePresentation, 
     loadPresentation  
 } from "./functions/presentation.js";
-import type { 
+import { 
     addTextObject,
     addImageObject,
     removeObject,
@@ -23,7 +23,7 @@ import type {
     resizeObject,
     updateTextObjectStyle
 } from "./functions/objects.js";
-import type { 
+import { 
     generateSlideId,
     addSlide,
     removeSlides,
@@ -45,7 +45,14 @@ export type {
     TextObjectOptions, 
     CoordinatesObjectOptions, 
     SizeObjectOptions, 
-    TextStylesOptions,
+    TextStylesOptions
+};
+export {
+    generatePresentationId,  
+    createPresentation, 
+    updatePresentationName, 
+    savePresentation, 
+    loadPresentation,
     addTextObject,
     addImageObject,
     removeObject,
@@ -61,11 +68,4 @@ export type {
     setSlideBackgroundImage,
     setSlideBackgroundGradient,
     clearSlideBackground
-};
-export {
-    generatePresentationId,  
-    createPresentation, 
-    updatePresentationName, 
-    savePresentation, 
-    loadPresentation
 }
